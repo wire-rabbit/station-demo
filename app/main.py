@@ -7,4 +7,4 @@ app = Flask(__name__,
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def global_route(path):
-    return "Hello SPA"
+    return render_template('index.html')
