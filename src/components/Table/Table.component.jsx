@@ -26,7 +26,7 @@ const Table = props => {
   return (
     <table data-test="component-table" className="ui celled table">
       {headerRow}
-      {dataRows}
+      <tbody>{dataRows}</tbody>
     </table>
   );
 };
