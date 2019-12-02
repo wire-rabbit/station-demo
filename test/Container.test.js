@@ -4,7 +4,7 @@ import Enzyme, { shallow } from 'enzyme';
 import {getComponentByTestAttr} from './testUtils';
 import Container from '../src/components/Container/Container.component';
 
-describe('Component', () => {
+describe('Container', () => {
   it('should render without crashing', () => {
     const wrapper = shallow(<Container />);
     const containerComponent = getComponentByTestAttr(
