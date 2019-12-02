@@ -1,8 +1,11 @@
 import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
 import axios from 'axios';
 
 import Container from '../Container/Container.component.jsx';
-import Table from '../Table/Table.component.jsx';
+import StationData from '../StationData/StationData.component.jsx';
+import StationDetails from '../StationDetails/StationDetails.component.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,31 +39,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div data-test="component-app">
-        <Container>
-          <Table
-            headerCells={[
-              'Station Name',
-              'Status',
-              'Available Bikes',
-              'Available Docks',
-              'Last Communication',
-            ]}
-            dataRows={this.state.stationData.map(station => {
-              return {
-                status: station.status,
-                cells: [
-                  station.stationName,
-                  station.statusKey == 1 ? 'In Service' : 'Not In Service',
-                  station.availableBikes,
-                  station.availableDocks,
-                  station.lastCommunicationTime,
-                ],
-              };
-            })}
-          />
-        </Container>
-      </div>
+      <BrowserRouter>
+        <div data-test="component-app">
+          <Container>
+            <Switch>
+              <Route path="/" exact>
+                <StationData stationData={this.state.stationData} />
+              </Route>
+              <Route path="/:id" exact>
+                <StationDetails stationData={this.state.stationData} />
+              </Route>
+            </Switch>
+          </Container>
+        </div>
+      </BrowserRouter>
     );
   }
 }
