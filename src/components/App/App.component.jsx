@@ -15,8 +15,8 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    axios
+  async fetchData() {
+    const res = await axios
       .get('/api/v1/data')
       .then(response => {
         if (response.data) {
@@ -29,12 +29,16 @@ class App extends React.Component {
           });
           this.setState({stationData: stations});
         } else {
-          console.log('No data found');
+          // TODO: handle error
         }
       })
       .catch(err => {
-        console.log(err);
+        // TODO: handle error
       });
+  }
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
