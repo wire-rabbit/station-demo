@@ -1,5 +1,5 @@
 # station-demo
-Historic bikeshare station data demo.
+Historic bikeshare station data demo. (This was a four-hour challenge.)
 
 Implementation Plan:
 
